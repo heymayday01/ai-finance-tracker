@@ -2,11 +2,11 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.core.database import Base, engine
 from app.models import User, Transaction
-from app.routes import auth, transactions
-
-Base.metadata.create_all(bind=engine)
+from app.routes import auth, transactions, ai
 
 app = FastAPI(title="AI Finance Tracker", version="1.0.0")
+
+Base.metadata.create_all(bind=engine)
 
 app.add_middleware(
     CORSMiddleware,
@@ -18,6 +18,7 @@ app.add_middleware(
 
 app.include_router(auth.router)
 app.include_router(transactions.router)
+app.include_router(ai.router)
 
 @app.get("/")
 def root():

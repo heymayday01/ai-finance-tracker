@@ -2,7 +2,101 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import api from '../api'
 
+const styles = {
+  container: { minHeight: '100vh', background: '#f0f2f5' },
+  navbar: {
+    background: 'white',
+    padding: '1rem 2rem',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    boxShadow: '0 2px 8px rgba(0,0,0,0.08)'
+  },
+  logo: { fontSize: '1.4rem', color: '#4f46e5' },
+  navRight: { display: 'flex', alignItems: 'center', gap: '1rem' },
+  welcome: { color: '#666', fontSize: '0.95rem' },
+  logoutBtn: {
+    padding: '0.4rem 1rem',
+    borderRadius: '8px',
+    border: '1px solid #ddd',
+    background: 'white',
+    color: '#666',
+    fontSize: '0.9rem'
+  },
+  content: { padding: '2rem', maxWidth: '900px', margin: '0 auto' },
+  cards: { display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1rem', marginBottom: '2rem' },
+  card: {
+    background: 'white',
+    padding: '1.5rem',
+    borderRadius: '12px',
+    boxShadow: '0 2px 8px rgba(0,0,0,0.06)'
+  },
+  cardLabel: { color: '#888', fontSize: '0.85rem', marginBottom: '0.5rem' },
+  cardAmount: { fontSize: '1.8rem', fontWeight: '700' },
+  sectionHeader: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' },
+  sectionTitle: { fontSize: '1.2rem', fontWeight: '600' },
+  addBtn: {
+    padding: '0.6rem 1.2rem',
+    borderRadius: '8px',
+    border: 'none',
+    background: '#4f46e5',
+    color: 'white',
+    fontWeight: '600',
+    fontSize: '0.9rem'
+  },
+  formCard: {
+    background: 'white',
+    padding: '1.5rem',
+    borderRadius: '12px',
+    marginBottom: '1rem',
+    boxShadow: '0 2px 8px rgba(0,0,0,0.06)'
+  },
+  form: { display: 'flex', flexDirection: 'column', gap: '0.75rem' },
+  input: {
+    padding: '0.75rem 1rem',
+    borderRadius: '8px',
+    border: '1px solid #ddd',
+    fontSize: '1rem'
+  },
+  list: { display: 'flex', flexDirection: 'column', gap: '0.75rem' },
+  empty: {
+    background: 'white',
+    padding: '2rem',
+    borderRadius: '12px',
+    textAlign: 'center',
+    color: '#888'
+  },
+  transactionItem: {
+    background: 'white',
+    padding: '1rem 1.5rem',
+    borderRadius: '12px',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    boxShadow: '0 2px 8px rgba(0,0,0,0.04)'
+  },
+  transactionLeft: { display: 'flex', flexDirection: 'column', gap: '0.2rem' },
+  category: { fontWeight: '600', fontSize: '0.95rem' },
+  description: { color: '#888', fontSize: '0.85rem' },
+  amount: { fontSize: '1.1rem', fontWeight: '700' },
+  loading: { display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh', fontSize: '1.2rem' },
+  insightsCard: {
+    background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+    padding: '1.5rem',
+    borderRadius: '12px',
+    marginTop: '0.5rem',
+  },
+  insightsText: {
+    color: 'white',
+    lineHeight: '1.7',
+    fontSize: '0.95rem',
+    whiteSpace: 'pre-wrap'
+  }
+}
+
 function Dashboard() {
+  const [insights, setInsights] = useState('')
+  const [insightsLoading, setInsightsLoading] = useState(false)
   const navigate = useNavigate()
   const user = JSON.parse(localStorage.getItem('user'))
   const [summary, setSummary] = useState({ total_income: 0, total_expense: 0, balance: 0 })
@@ -19,6 +113,18 @@ function Dashboard() {
   useEffect(() => {
     fetchData()
   }, [])
+
+  async function fetchInsights() {
+    setInsightsLoading(true)
+    try {
+      const res = await api.get('/ai/insights')
+      setInsights(res.data.insights)
+    } catch (err) {
+      setInsights('Could not load insights right now.')
+    } finally {
+      setInsightsLoading(false)
+    }
+  }
 
   async function fetchData() {
     try {
@@ -160,89 +266,23 @@ function Dashboard() {
           )}
         </div>
 
+        {/* AI Insights */}
+        <div style={{...styles.sectionHeader, marginTop: '2rem'}}>
+          <h2 style={styles.sectionTitle}>🤖 AI Insights</h2>
+          <button style={styles.addBtn} onClick={fetchInsights} disabled={insightsLoading}>
+            {insightsLoading ? 'Analyzing...' : 'Analyze My Spending'}
+          </button>
+        </div>
+
+        {insights && (
+          <div style={styles.insightsCard}>
+            <p style={styles.insightsText}>{insights}</p>
+          </div>
+        )}
+
       </div>
     </div>
   )
-}
-
-const styles = {
-  container: { minHeight: '100vh', background: '#f0f2f5' },
-  navbar: {
-    background: 'white',
-    padding: '1rem 2rem',
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    boxShadow: '0 2px 8px rgba(0,0,0,0.08)'
-  },
-  logo: { fontSize: '1.4rem', color: '#4f46e5' },
-  navRight: { display: 'flex', alignItems: 'center', gap: '1rem' },
-  welcome: { color: '#666', fontSize: '0.95rem' },
-  logoutBtn: {
-    padding: '0.4rem 1rem',
-    borderRadius: '8px',
-    border: '1px solid #ddd',
-    background: 'white',
-    color: '#666',
-    fontSize: '0.9rem'
-  },
-  content: { padding: '2rem', maxWidth: '900px', margin: '0 auto' },
-  cards: { display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1rem', marginBottom: '2rem' },
-  card: {
-    background: 'white',
-    padding: '1.5rem',
-    borderRadius: '12px',
-    boxShadow: '0 2px 8px rgba(0,0,0,0.06)'
-  },
-  cardLabel: { color: '#888', fontSize: '0.85rem', marginBottom: '0.5rem' },
-  cardAmount: { fontSize: '1.8rem', fontWeight: '700' },
-  sectionHeader: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' },
-  sectionTitle: { fontSize: '1.2rem', fontWeight: '600' },
-  addBtn: {
-    padding: '0.6rem 1.2rem',
-    borderRadius: '8px',
-    border: 'none',
-    background: '#4f46e5',
-    color: 'white',
-    fontWeight: '600',
-    fontSize: '0.9rem'
-  },
-  formCard: {
-    background: 'white',
-    padding: '1.5rem',
-    borderRadius: '12px',
-    marginBottom: '1rem',
-    boxShadow: '0 2px 8px rgba(0,0,0,0.06)'
-  },
-  form: { display: 'flex', flexDirection: 'column', gap: '0.75rem' },
-  input: {
-    padding: '0.75rem 1rem',
-    borderRadius: '8px',
-    border: '1px solid #ddd',
-    fontSize: '1rem'
-  },
-  list: { display: 'flex', flexDirection: 'column', gap: '0.75rem' },
-  empty: {
-    background: 'white',
-    padding: '2rem',
-    borderRadius: '12px',
-    textAlign: 'center',
-    color: '#888'
-  },
-  transactionItem: {
-    background: 'white',
-    padding: '1rem 1.5rem',
-    borderRadius: '12px',
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    boxShadow: '0 2px 8px rgba(0,0,0,0.04)'
-  },
-  transactionLeft: { display: 'flex', flexDirection: 'column', gap: '0.2rem' },
-  category: { fontWeight: '600', fontSize: '0.95rem' },
-  description: { color: '#888', fontSize: '0.85rem' },
-  amount: { fontSize: '1.1rem', fontWeight: '700' },
-  loading: { display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh', fontSize: '1.2rem' }
 }
 
 export default Dashboard
