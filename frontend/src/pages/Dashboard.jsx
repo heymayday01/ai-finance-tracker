@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import api from '../api'
+import { ExpensePieChart, IncomeExpenseBar } from '../components/Charts'
 
 const styles = `
   @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
@@ -453,6 +454,22 @@ function Dashboard() {
               <p className="card-amount balance">₹{summary.balance.toFixed(2)}</p>
             </div>
           </div>
+          {/* Charts */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: '1fr 1fr',
+          gap: '1rem',
+          marginBottom: '2rem'
+        }}>
+          <div className="card">
+            <p className="card-label" style={{marginBottom: '1rem'}}>Expense Breakdown</p>
+            <ExpensePieChart transactions={transactions} />
+          </div>
+          <div className="card">
+            <p className="card-label" style={{marginBottom: '1rem'}}>Income vs Expenses</p>
+            <IncomeExpenseBar summary={summary} />
+          </div>
+        </div>
 
           {/* Transactions */}
           <div className="section-header">
