@@ -30,7 +30,7 @@ def create_transaction(
 ):
     new_transaction = Transaction(
         amount=transaction_data.amount,
-        type=transaction_data.type,
+        type=transaction_data.type.value,
         category=transaction_data.category,
         description=transaction_data.description,
         user_id=current_user.id

@@ -71,8 +71,5 @@ def get_insights(
         )
         return {"insights": response.candidates[0].content.parts[0].text}
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"AI error: {str(e)}")
-    
-    except Exception as e:
         print(f"GEMINI ERROR: {str(e)}")
         raise HTTPException(status_code=500, detail=f"AI error: {str(e)}")
