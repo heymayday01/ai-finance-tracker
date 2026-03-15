@@ -1,13 +1,15 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 export default function AnimatedCounter({ value, prefix = '', suffix = '', duration = 1200 }) {
   const [display, setDisplay] = useState(0)
+  const prevValueRef = useRef(0)
 
   useEffect(() => {
-    if (value === 0) { setDisplay(0); return }
+    if (value === prevValueRef.current) return
 
+    const startVal = prevValueRef.current
     const startTime = performance.now()
-    const startVal = 0
+    let frameId
 
     function update(currentTime) {
       const elapsed = currentTime - startTime
@@ -19,13 +21,15 @@ export default function AnimatedCounter({ value, prefix = '', suffix = '', durat
       setDisplay(current)
 
       if (progress < 1) {
-        requestAnimationFrame(update)
+        frameId = requestAnimationFrame(update)
       } else {
         setDisplay(value)
+        prevValueRef.current = value
       }
     }
 
-    requestAnimationFrame(update)
+    frameId = requestAnimationFrame(update)
+    return () => cancelAnimationFrame(frameId)
   }, [value, duration])
 
   return (

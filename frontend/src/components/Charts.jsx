@@ -1,3 +1,4 @@
+import { memo } from 'react'
 import { PieChart, Pie, Cell, BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Legend } from 'recharts'
 
 const COLORS = ['#6366f1', '#34d399', '#f87171', '#fbbf24', '#a78bfa', '#38bdf8', '#fb923c']
@@ -20,7 +21,7 @@ const CustomTooltip = ({ active, payload }) => {
   return null
 }
 
-export function ExpensePieChart({ transactions }) {
+export const ExpensePieChart = memo(function ExpensePieChart({ transactions }) {
   const data = {}
   transactions.forEach(t => {
     if (t.type === 'expense') {
@@ -52,9 +53,9 @@ export function ExpensePieChart({ transactions }) {
       </PieChart>
     </ResponsiveContainer>
   )
-}
+})
 
-export function IncomeExpenseBar({ summary }) {
+export const IncomeExpenseBar = memo(function IncomeExpenseBar({ summary }) {
   const data = [
     { name: 'Income', value: summary.total_income, fill: '#34d399' },
     { name: 'Expenses', value: summary.total_expense, fill: '#f87171' },
@@ -76,4 +77,4 @@ export function IncomeExpenseBar({ summary }) {
       </BarChart>
     </ResponsiveContainer>
   )
-}
+})
