@@ -1,209 +1,363 @@
-# 💰 FinanceAI — AI-Powered Personal Finance Tracker
+<div align="center">
 
-A full-stack personal finance tracker with AI-generated spending insights, beautiful dark glassmorphism UI, and real-time data visualization.
+```
+███████╗██╗███╗   ██╗ █████╗ ███╗   ██╗ ██████╗███████╗ █████╗ ██╗
+██╔════╝██║████╗  ██║██╔══██╗████╗  ██║██╔════╝██╔════╝██╔══██╗██║
+█████╗  ██║██╔██╗ ██║███████║██╔██╗ ██║██║     █████╗  ███████║██║
+██╔══╝  ██║██║╚██╗██║██╔══██║██║╚██╗██║██║     ██╔══╝  ██╔══██║██║
+██║     ██║██║ ╚████║██║  ██║██║ ╚████║╚██████╗███████╗██║  ██║██║
+╚═╝     ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝╚═╝  ╚═══╝ ╚═════╝╚══════╝╚═╝  ╚═╝╚═╝
+```
 
-![Tech Stack](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)
-![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
-![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+### *Your money. Your data. Your AI.*
 
----
+<br/>
 
-## ✨ Features
+[![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
+[![React](https://img.shields.io/badge/React_19-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://react.dev)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)](https://postgresql.org)
+[![Python](https://img.shields.io/badge/Python_3.10+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
+[![Gemini](https://img.shields.io/badge/Google_Gemini-4285F4?style=for-the-badge&logo=google&logoColor=white)](https://ai.google.dev)
+[![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev)
 
-- 🔐 **JWT Authentication** — Secure register/login with bcrypt password hashing
-- 💸 **Transaction Management** — Add and track income & expenses by category
-- 📊 **Data Visualization** — Donut chart for expense breakdown, bar chart for income vs expenses
-- 🤖 **AI Financial Insights** — Gemini AI analyzes your spending and gives personalized advice
-- 🌙 **Dark Glassmorphism UI** — Modern dark theme with blur effects, gradient accents, and smooth animations
-- 🛡️ **Protected Routes** — Unauthenticated users are redirected to login automatically
+<br/>
 
----
+[![License: MIT](https://img.shields.io/badge/License-MIT-00ff88?style=flat-square)](LICENSE)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-00d4ff?style=flat-square)](https://github.com/heymayday01/ai-finance-tracker/pulls)
+[![Made with ❤️](https://img.shields.io/badge/Made_with-❤️-ff6b6b?style=flat-square)](https://github.com/heymayday01)
+[![Status](https://img.shields.io/badge/Status-Active-00ff88?style=flat-square)]()
 
-## 🖥️ Screenshots
+</div>
 
-> Dashboard with real-time charts, transaction list, and AI insights panel
-
----
-
-## 🛠️ Tech Stack
-
-### Backend
-| Technology | Purpose |
-|---|---|
-| FastAPI | REST API framework |
-| PostgreSQL | Relational database |
-| SQLAlchemy | ORM for database models |
-| Pydantic | Data validation & schemas |
-| JWT + bcrypt | Authentication & password hashing |
-| Google Gemini API | AI-powered financial insights |
-
-### Frontend
-| Technology | Purpose |
-|---|---|
-| React (Vite) | Frontend framework |
-| Axios | HTTP client for API calls |
-| React Router | Client-side routing |
-| Recharts | Data visualization (charts) |
+<br/>
 
 ---
 
-## 🚀 Getting Started
+<br/>
+
+## ◈ What is FinanceAI?
+
+> **FinanceAI** is a full-stack, AI-powered personal finance tracker built to give you complete visibility over your money — with the help of Google Gemini, real-time charts, and a glassmorphism UI that makes budgeting feel less like a chore and more like a superpower.
+
+Track income. Audit expenses. Let AI tell you where your money is actually going.
+
+<br/>
+
+---
+
+<br/>
+
+## ◈ Feature Highlights
+
+<br/>
+
+| ✦ | Feature | What it does |
+|---|---|---|
+| 🔐 | **JWT Authentication** | Secure register & login with bcrypt hashing — no plain-text passwords, ever |
+| 💸 | **Transaction Engine** | Add, filter, search, and delete income & expense entries in real time |
+| 📊 | **Live Visualizations** | Donut chart for expense breakdown · Bar chart for income vs expense vs balance |
+| 🤖 | **AI Spending Insights** | Gemini AI reads your transaction history and surfaces personalised financial advice |
+| 🌌 | **Glassmorphism UI** | Dark void background · floating starfield · blur-glass cards · smooth staggered animations |
+| 🛡️ | **Protected Routes** | All financial data is user-scoped — unauthenticated requests are bounced immediately |
+| 📈 | **Quick Stats Panel** | Savings rate · top spend category · average transaction · total count — always visible |
+| 🎯 | **Search & Filter** | Real-time search with type filters (All · Income · Expense) |
+
+<br/>
+
+---
+
+<br/>
+
+## ◈ Tech Stack
+
+<br/>
+
+### ⬡ Backend
+
+```
+FastAPI          →  High-performance async REST API
+PostgreSQL       →  Relational database with full ACID compliance
+SQLAlchemy       →  ORM with declarative models
+Pydantic v2      →  Request/response validation & serialization
+JWT + bcrypt     →  Stateless auth with secure password hashing
+Google Gemini    →  LLM for AI-powered financial analysis
+Uvicorn          →  ASGI server for production-grade performance
+```
+
+### ⬡ Frontend
+
+```
+React 19 (Vite)  →  Lightning-fast frontend with HMR
+Axios            →  HTTP client with JWT interceptor
+React Router v6  →  Declarative client-side routing
+Recharts         →  Composable SVG chart library
+DM Mono          →  Monospace font for financial data
+Unbounded        →  Display font for headings
+Manrope          →  Body font for readable prose
+```
+
+<br/>
+
+---
+
+<br/>
+
+## ◈ Project Structure
+
+```
+ai-finance-tracker/
+│
+├── 📂 backend/
+│   ├── 📂 app/
+│   │   ├── 📂 core/
+│   │   │   ├── database.py       ← DB connection & session factory
+│   │   │   └── security.py       ← JWT signing & bcrypt hashing
+│   │   │
+│   │   ├── 📂 models/
+│   │   │   ├── user.py           ← User ORM model
+│   │   │   └── transaction.py    ← Transaction ORM model
+│   │   │
+│   │   ├── 📂 routes/
+│   │   │   ├── auth.py           ← POST /auth/register · /auth/login
+│   │   │   ├── transactions.py   ← GET/POST/DELETE /transactions/
+│   │   │   └── ai.py             ← GET /ai/insights (Gemini)
+│   │   │
+│   │   ├── 📂 schemas/
+│   │   │   ├── user.py           ← UserCreate, UserResponse
+│   │   │   └── transaction.py    ← TransactionCreate, TransactionResponse
+│   │   │
+│   │   └── main.py               ← FastAPI app entry point + CORS
+│   │
+│   ├── requirements.txt
+│   └── .env                      ← (not committed — see below)
+│
+└── 📂 frontend/
+    └── 📂 src/
+        ├── 📂 components/
+        │   ├── Charts.jsx         ← Recharts pie & bar chart components
+        │   ├── AnimatedCounter.jsx
+        │   ├── ConfettiBurst.jsx
+        │   ├── Skeleton.jsx
+        │   └── Toast.jsx
+        │
+        ├── 📂 pages/
+        │   ├── Dashboard.jsx      ← Main app view
+        │   ├── Login.jsx
+        │   └── Register.jsx
+        │
+        ├── api.js                 ← Axios instance with auth interceptor
+        └── App.jsx                ← Routes + ProtectedRoute wrapper
+```
+
+<br/>
+
+---
+
+<br/>
+
+## ◈ API Reference
+
+<br/>
+
+### Authentication
+
+```
+POST  /auth/register    →  Create account         body: { name, email, password }
+POST  /auth/login       →  Get JWT token           body: { email, password }
+```
+
+### Transactions  `🔒 Bearer token required`
+
+```
+POST  /transactions/            →  Add transaction      body: { type, amount, category, description }
+GET   /transactions/            →  List all             query: (none)
+GET   /transactions/summary     →  income / expense / balance totals
+DELETE /transactions/{id}       →  Delete by ID
+```
+
+### AI  `🔒 Bearer token required`
+
+```
+GET  /ai/insights    →  Returns Gemini-generated markdown analysis of spending patterns
+```
+
+<br/>
+
+---
+
+<br/>
+
+## ◈ Getting Started
+
+<br/>
 
 ### Prerequisites
-- Python 3.10+
-- Node.js 18+
-- PostgreSQL
 
-### 1. Clone the repository
 ```bash
-git clone https://github.com/YOURUSERNAME/ai-finance-tracker.git
+python --version   # 3.10 or higher
+node --version     # 18 or higher
+psql --version     # PostgreSQL 14+
+```
+
+<br/>
+
+### 1 · Clone
+
+```bash
+git clone https://github.com/heymayday01/ai-finance-tracker.git
 cd ai-finance-tracker
 ```
 
-### 2. Backend Setup
+### 2 · Backend
+
 ```bash
 cd backend
-python -m venv venv
-venv\Scripts\activate        # Windows
-# source venv/bin/activate   # Mac/Linux
 
+# Create and activate virtual environment
+python -m venv venv
+venv\Scripts\activate          # Windows
+source venv/bin/activate       # Mac / Linux
+
+# Install dependencies
 pip install -r requirements.txt
 ```
 
-Create a `.env` file inside the `backend` folder:
+Create `backend/.env`:
+
 ```env
 DATABASE_URL=postgresql://postgres:yourpassword@localhost:5432/finance_tracker
-SECRET_KEY=your_secret_key_here
+SECRET_KEY=your_super_secret_key_here_make_it_long
 GEMINI_API_KEY=your_gemini_api_key_here
 ```
 
-Create the PostgreSQL database:
+Create the database:
+
 ```sql
 CREATE DATABASE finance_tracker;
 ```
 
-Start the backend server:
+Start the server:
+
 ```bash
 uvicorn app.main:app --reload
+# → Running at http://localhost:8000
+# → Swagger docs at http://localhost:8000/docs
 ```
 
-Backend runs at `http://localhost:8000`
-API docs available at `http://localhost:8000/docs`
+### 3 · Frontend
 
-### 3. Frontend Setup
 ```bash
 cd frontend
 npm install
 npm run dev
+# → Running at http://localhost:5173
 ```
 
-Frontend runs at `http://localhost:5173`
+<br/>
 
 ---
 
-## 📁 Project Structure
+<br/>
 
-```
-ai-finance-tracker/
-├── backend/
-│   ├── app/
-│   │   ├── core/
-│   │   │   ├── database.py      # DB connection & session
-│   │   │   └── security.py      # JWT & password hashing
-│   │   ├── models/
-│   │   │   ├── user.py          # User table
-│   │   │   └── transaction.py   # Transaction table
-│   │   ├── routes/
-│   │   │   ├── auth.py          # Register & login endpoints
-│   │   │   ├── transactions.py  # CRUD transaction endpoints
-│   │   │   └── ai.py            # Gemini AI insights endpoint
-│   │   ├── schemas/
-│   │   │   ├── user.py          # User request/response schemas
-│   │   │   └── transaction.py   # Transaction schemas
-│   │   └── main.py              # FastAPI app entry point
-│   ├── requirements.txt
-│   └── .env                     # (not committed)
-│
-└── frontend/
-    └── src/
-        ├── components/
-        │   ├── Charts.jsx        # Recharts pie & bar charts
-        │   └── ProtectedRoute.jsx
-        ├── pages/
-        │   ├── Login.jsx
-        │   ├── Register.jsx
-        │   └── Dashboard.jsx
-        ├── api.js                # Axios instance with JWT interceptor
-        └── App.jsx
-```
+## ◈ Environment Variables
 
----
+<br/>
 
-## 🔌 API Endpoints
-
-### Authentication
-| Method | Endpoint | Description |
+| Variable | Where to get it | Required |
 |---|---|---|
-| POST | `/auth/register` | Create a new user account |
-| POST | `/auth/login` | Login and receive JWT token |
+| `DATABASE_URL` | Your PostgreSQL connection string | ✅ |
+| `SECRET_KEY` | Any long random string (32+ chars) | ✅ |
+| `GEMINI_API_KEY` | [Google AI Studio](https://aistudio.google.com) — free tier available | ✅ |
 
-### Transactions
-| Method | Endpoint | Description | Auth Required |
-|---|---|---|---|
-| POST | `/transactions/` | Add a new transaction | ✅ |
-| GET | `/transactions/` | Get all user transactions | ✅ |
-| GET | `/transactions/summary` | Get income, expense & balance totals | ✅ |
-
-### AI
-| Method | Endpoint | Description | Auth Required |
-|---|---|---|---|
-| GET | `/ai/insights` | Get AI-generated financial advice | ✅ |
+<br/>
 
 ---
 
-## 🌐 Deployment
+<br/>
 
-| Service | Platform |
-|---|---|
-| Frontend | Vercel |
-| Backend | Render |
-| Database | Supabase |
+## ◈ Deployment
 
----
+<br/>
 
-## 🔑 Environment Variables
+```
+Frontend  →  Vercel       (connect GitHub repo, zero-config deploy)
+Backend   →  Render       (set env vars, auto-deploy on push)
+Database  →  Supabase     (managed PostgreSQL, generous free tier)
+```
 
-| Variable | Description |
-|---|---|
-| `DATABASE_URL` | PostgreSQL connection string |
-| `SECRET_KEY` | Secret key for JWT signing |
-| `GEMINI_API_KEY` | Google Gemini API key (free tier) |
+> **Tip:** Set `CORS` origins in `main.py` to your Vercel deployment URL before pushing to production.
+
+<br/>
 
 ---
 
-## 📦 Installation Summary
+<br/>
+
+## ◈ Installation Cheatsheet
 
 ```bash
-# Backend dependencies
-pip install fastapi uvicorn sqlalchemy psycopg2-binary python-dotenv
-pip install passlib[bcrypt] python-jose[cryptography] google-genai
-pip install "pydantic[email]" bcrypt==4.0.1
+# Backend
+pip install fastapi uvicorn sqlalchemy psycopg2-binary python-dotenv \
+            passlib[bcrypt] python-jose[cryptography] google-genai \
+            "pydantic[email]" bcrypt==4.0.1
 
-# Frontend dependencies
-npm install axios react-router-dom recharts
+# Frontend
+npm install axios react-router-dom recharts date-fns react-markdown
 ```
 
----
-
-## 🧑‍💻 Author
-
-**Aryan Thakre**
-- GitHub: [@heymayday01](https://github.com/heymayday01)
-
+<br/>
 
 ---
 
-## 📄 License
+<br/>
 
-This project is open source and available under the [MIT License](LICENSE).
+## ◈ Roadmap
+
+```
+✅  Core transaction CRUD
+✅  JWT auth with bcrypt
+✅  Recharts visualizations
+✅  Gemini AI insights
+✅  Glassmorphism UI + starfield
+✅  Timeline transaction list
+✅  Quick stats sidebar
+⬜  Monthly budget goals
+⬜  CSV export
+⬜  Recurring transaction detection
+⬜  Mobile app (React Native)
+⬜  Multi-currency support
+```
+
+<br/>
+
+---
+
+<br/>
+
+## ◈ Author
+
+<br/>
+
+<div align="center">
+
+**Built by Aryan Thakre**
+
+[![GitHub](https://img.shields.io/badge/GitHub-@heymayday01-181717?style=for-the-badge&logo=github)](https://github.com/heymayday01)
+
+*"Track everything. Understand more. Stress less."*
+
+</div>
+
+<br/>
+
+---
+
+<br/>
+
+<div align="center">
+
+**FinanceAI** · MIT License · Made with 🖤 and too much coffee
+
+*If this helped you, drop a ⭐ — it means a lot.*
+
+</div>
