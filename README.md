@@ -47,45 +47,6 @@ Track income. Audit expenses. Let AI tell you where your money is actually going
 
 <br/>
 
-## ◈ Screenshots
-
-<br/>
-
-<div align="center">
-
-### 🌌 Stats, Charts & Overview
-
-<img src="screenshot-overview.png" alt="FinanceAI — Stats overview with income, expenses, balance cards and live charts" width="100%" />
-
-<br/>
-<sub>← Income · Expense · Balance stat cards with progress bars &nbsp;|&nbsp; Expense donut chart &nbsp;|&nbsp; Income vs Expenses bar chart →</sub>
-
-<br/><br/><br/>
-
-### 💸 Transactions · AI Insights · Quick Stats
-
-<img src="screenshot-transactions.png" alt="FinanceAI — Transaction timeline with AI insights panel and quick stats sidebar" width="100%" />
-
-<br/>
-<sub>← Transaction timeline with colour-coded dots &nbsp;|&nbsp; Search & filter bar &nbsp;|&nbsp; AI Insights panel &nbsp;|&nbsp; Quick Stats sidebar →</sub>
-
-<br/><br/><br/>
-
-### 🔍 Scrolled View — Timeline Detail
-
-<img src="screenshot-mobile.png" alt="FinanceAI — Close-up of transaction list and AI sidebar" width="100%" />
-
-<br/>
-<sub>← Scrolled dashboard state showing the full transaction list & AI idle state →</sub>
-
-</div>
-
-<br/>
-
----
-
-<br/>
-
 ## ◈ Feature Highlights
 
 <br/>
@@ -208,16 +169,16 @@ POST  /auth/login       →  Get JWT token           body: { email, password }
 ### Transactions  `🔒 Bearer token required`
 
 ```
-POST    /transactions/          →  Add transaction      body: { type, amount, category, description }
-GET     /transactions/          →  List all             returns: Transaction[]
-GET     /transactions/summary   →  Totals               returns: { total_income, total_expense, balance }
-DELETE  /transactions/{id}      →  Delete by ID
+POST  /transactions/            →  Add transaction      body: { type, amount, category, description }
+GET   /transactions/            →  List all             query: (none)
+GET   /transactions/summary     →  income / expense / balance totals
+DELETE /transactions/{id}       →  Delete by ID
 ```
 
 ### AI  `🔒 Bearer token required`
 
 ```
-GET  /ai/insights    →  Gemini-generated markdown analysis of spending patterns
+GET  /ai/insights    →  Returns Gemini-generated markdown analysis of spending patterns
 ```
 
 <br/>
@@ -279,8 +240,8 @@ Start the server:
 
 ```bash
 uvicorn app.main:app --reload
-# → Running at  http://localhost:8000
-# → Swagger UI  http://localhost:8000/docs
+# → Running at http://localhost:8000
+# → Swagger docs at http://localhost:8000/docs
 ```
 
 ### 3 · Frontend
@@ -324,7 +285,7 @@ Backend   →  Render       (set env vars, auto-deploy on push)
 Database  →  Supabase     (managed PostgreSQL, generous free tier)
 ```
 
-> **Tip:** Update the `CORS` origins in `main.py` to your Vercel deployment URL before pushing to production.
+> **Tip:** Set `CORS` origins in `main.py` to your Vercel deployment URL before pushing to production.
 
 <br/>
 
@@ -357,12 +318,11 @@ npm install axios react-router-dom recharts date-fns react-markdown
 ✅  JWT auth with bcrypt
 ✅  Recharts visualizations
 ✅  Gemini AI insights
-✅  Glassmorphism UI + starfield canvas
+✅  Glassmorphism UI + starfield
 ✅  Timeline transaction list
 ✅  Quick stats sidebar
-✅  Savings rate + progress bars
-⬜  Monthly budget goals & alerts
-⬜  CSV / PDF export
+⬜  Monthly budget goals
+⬜  CSV export
 ⬜  Recurring transaction detection
 ⬜  Mobile app (React Native)
 ⬜  Multi-currency support
@@ -398,6 +358,6 @@ npm install axios react-router-dom recharts date-fns react-markdown
 
 **FinanceAI** · MIT License · Made with 🖤 and too much coffee
 
-*If this helped you, a ⭐ means a lot.*
+*If this helped you, drop a ⭐ — it means a lot.*
 
 </div>
